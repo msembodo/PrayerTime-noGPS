@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Prayer Time - noGPS</string>
+    <string name="hint_location">Input location here</string>
+    <string name="err_msg_location">Location field can not be empty</string>
+    <string name="btn_find">FIND</string>
+    <string name="action_settings">Settings</string>
+</resources>
