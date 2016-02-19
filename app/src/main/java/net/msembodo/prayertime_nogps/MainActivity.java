@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressDialog pd;
 
+    private boolean hasBeenClicked;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,27 @@ public class MainActivity extends AppCompatActivity {
         imgTime = (ImageView) findViewById(R.id.imageTime);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (hasBeenClicked) {
+            String strLocation = editLocation.getText().toString();
+            buildData(strLocation);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("wasClicked", hasBeenClicked);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        hasBeenClicked = savedInstanceState.getBoolean("wasClicked");
+    }
+
     private void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editLocation.getWindowToken(), 0);
@@ -67,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             buildData(strLocation);
             hideKeyboard();
+            hasBeenClicked = true;
         }
     }
 
