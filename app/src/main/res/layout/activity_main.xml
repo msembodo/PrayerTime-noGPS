@@ -24,7 +24,7 @@
             android:id="@+id/input_layout_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <EditText
+            <net.msembodo.extendedwidget.ClearableAutoCompleteTextView
                 android:id="@+id/editLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
